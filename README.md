@@ -8,6 +8,10 @@ The **main use case of Xutiles** is wide display setup, i.e., screens with 12:5 
 
 Xutiles is a BASH script that takes one parameter representing the target zone and moves the currently active window to the zone. Xutiles is written with the idea that you bind it to keyboard shortcuts. No mouse support you may know from Fancy Zones or Kzones is implemented.
 
+This is how your screen may be organized with Xutiles:
+
+![Windows organization with Xutiles](./img/screen-tiles-example.webp)
+
 ## Installation
 
 1. Clone this repo or simply download `xutiles.sh` to your computer.
