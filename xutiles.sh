@@ -90,3 +90,11 @@ if [ $1 == 3 ]; then
 	HEIGHT=0.45
 	resize_and_place_window
 fi
+
+if [ $1 == 4 ]; then
+	LEFT=0.6
+	TOP=0.55
+	WIDTH=0.4
+	HEIGHT=0.45
+	resize_and_place_window
+fi
