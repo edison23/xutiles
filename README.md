@@ -105,7 +105,7 @@ Zones and their number are configured in the condition blocks that test for the 
 
 ![Zones defined out of the box by Xutiles](./img/zone-schema.svg)
 
-The first and biggest zone:
+**Zone 1**: The first and biggest zone:
 
 ```
 if [ $1 == 0 ]; then
@@ -119,7 +119,7 @@ if [ $1 == 0 ]; then
 
 This zone is invoked by `./xutiles.sh 0`.
 
-The next zone
+**Zone 2**: The next zone
 
 ```
 if [ $1 == 1 ]; then
@@ -133,7 +133,9 @@ if [ $1 == 1 ]; then
 
 This zone is invoked by `./xutiles.sh 1`.
 
-Beneath this zone, there are two zones that split the remaining space into two rectangles. On the left is starts a zone on the 60th percent of the screen horizontally, uses 17% of the screen and uses remaining height vertically, i.e., 45 %. The zone next to it is vertically the same and uses the remainder of the screen horizontally, that is 23 % (because 100-60-17=23).
+**Zones 3 and 4**: 
+
+Beneath zone 2, there are two zones that split the remaining space into two rectangles. On the left is starts a zone on the 60th percent of the screen horizontally, uses 17% of the screen and uses remaining height vertically, i.e., 45 %. The zone next to it is vertically the same and uses the remainder of the screen horizontally, that is 23 % (because 100-60-17=23).
 
 ```
 if [ $1 == 2 ]; then
@@ -151,6 +153,21 @@ if [ $1 == 3 ]; then
 	HEIGHT=0.45
 	resize_and_place_window
 fi
+```
+
+Lastly, there's one "special" **zone spanning zones 3 and 4**. This is for the use cases when you need to use that part of the screen but need the window wider.
+
+This shows that you can overlap the zones however you wish.
+
+```
+if [ $1 == 4 ]; then
+	LEFT=0.6
+	TOP=0.55
+	WIDTH=0.4
+	HEIGHT=0.45
+	resize_and_place_window
+fi
+
 ```
 
 These zones are invoked by `./xutiles.sh 2` and `./xutiles.sh 3` respectively.
