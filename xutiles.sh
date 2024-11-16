@@ -3,15 +3,6 @@
 # Prerequisites:
 # install wmctrl (from repositories, 1.07-7ubuntu3)
 
-# PANEL_HEIGHT - find out in your Xfce panel height in the panel settings; in other distros, use your top panel height. If no panel there, use 0. To account for bottom panel, lower the vertical screen resolution accordingly.
-# WINDOW_DECORATION_HEIGHT - top-bar window decoration; find out empirically. 25px is for Graybird-dark on Xubuntu.
-# WINDOW_DECORATION_WIDTH - vertical borders of windows; find out empirically. 1px is for Graybird-dark on Xubuntu.
-
-# Special windows workarounds
-# - Firefox: On tab bar, right click > Customize and select "Title Bar" at the bottom of the screen. This forces FF to use native window decorations and avoid screwing up positioning. Another option may be to add FF to the specific windows workaround. See $WINNAME for that. You're on your own, tho.
-# - Vivaldi: Similar to Firefox, in Settings > Appearance, select "Use Native Window" and restart Vivaldi.
-# - Brave: A workaround is in place for the option "Use system title bar and borders" not selected. If you want to use the option, comment out the if branch for 'Brave-browser'
-
 # wmctrl explanation:
 # -r selects a window. It can by title, but for this case, :ACTIVE: pseudoclass is useful.
 # -b add|remove|toggle attributes of the selected window. We need to remove maximization on both axis to enable window resize
@@ -35,7 +26,7 @@ resize_and_place_window () {
 	fi
 
 	ACTIVE_WINDOW_ID=$(xprop -root _NET_ACTIVE_WINDOW | cut -d' ' -f5 | sed s/,//)
-	WINNAME=$(xwininfo -id $ACTIVE_WINDOW_ID |grep 'xwininfo: Window id:' | sed -r 's/xwininfo: Window id:.*"(.*)".*/\1/')
+	# WINNAME=$(xwininfo -id $ACTIVE_WINDOW_ID |grep 'xwininfo: Window id:' | sed -r 's/xwininfo: Window id:.*"(.*)".*/\1/')
 	WIN_CLASS_NAME=$(xprop -id $ACTIVE_WINDOW_ID | grep WM_CLASS | sed -r 's/.*?"(.*?)".*/\1/')
 
 	local TMP=$((SCREEN_RESOLUTION_Y - PANEL_HEIGHT - WINDOW_DECORATION_HEIGHT))
@@ -49,8 +40,8 @@ resize_and_place_window () {
 	local REAL_HEIGHT=$(echo "scale=2; $REAL_RES_Y * $HEIGHT - $WINDECOR_CORRECTION" | bc)
 	local REAL_HEIGHT=${REAL_HEIGHT%.*}
 
-	if    [[ $WINNAME == "Resources" ]] \
-	   || [[ $WINNAME == "Mission Center" ]]; then
+	if    [[ $WIN_CLASS_NAME == "resources" ]] \
+		|| [[ $WIN_CLASS_NAME == "missioncenter" ]]; then
 		local REAL_TOP=$((REAL_TOP-55))
 		local REAL_LEFT=$((REAL_LEFT-59))
 
