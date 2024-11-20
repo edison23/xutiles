@@ -1,6 +1,6 @@
 # Xutiles
 
-_A window tiling helper for X_
+_A windows tiling helper for X_
 
 Xutiles /ksutɪlɛs/ is a window tiling helper for X-server based Linux systems like Xubuntu that aims to provide a functionality similar to [Windows Fancy Zones](https://learn.microsoft.com/en-us/windows/powertoys/fancyzones), [Gnome gTile](https://extensions.gnome.org/extension/28/gtile/), or [Kubuntu KZones](https://store.kde.org/p/1909220).
 
@@ -19,6 +19,7 @@ This is how your screen may be organized with Xutiles:
 1. Download Xutiles and make it executable (→ [Installation](#installation))
 1. Configure your screen resolution in the script (→ [Resolution](#resolution))
 1. Test-run the script in your terminal. E.g., `xutiles.sh 1` (→ [Usage](#usage))
+1. Review sizing workarounds for special non-native windows (→ [Special adjustments](#sizing-workarounds-for-special-windows-browsers-non-native-apps))
 1. Bind Xutiles to keyboard shortcuts (→ [Keyboard shortcuts](#bind-to-keyboard-shortcuts))
 1. Tweak Xutiles settings to suit your needs (→ read the whole tutorial)
 
@@ -50,7 +51,7 @@ Set the variables:
 - `SCREEN_RESOLUTION_X` to the width of your screen, and 
 - `SCREEN_RESOLUTION_Y` to the height of your screen.
 
-Out of the box, Xutiles is set to resolution 3840×1600 px.
+Out of the box, Xutiles is set to resolution 3840×1600 px.
 
 If you don't know your screen resolution, open system configuration > display settings, you'll likely find it there. Under Xubuntu:
 
@@ -88,8 +89,8 @@ Vertical panel is currently not directly supported. You may account for it when 
 
 The window decorations need to be compensated for. There are two dimensions:
 
-- `WINDOW_DECORATION_HEIGHT` - top-bar window decoration; find out empirically. 25px is for Graybird-dark on Xubuntu.
-- `WINDOW_DECORATION_WIDTH` - vertical borders of windows; find out empirically. 1px is for Graybird-dark on Xubuntu.
+- `WINDOW_DECORATION_HEIGHT` - top-bar window decoration; find out empirically. 25 px is for Graybird-dark on Xubuntu.
+- `WINDOW_DECORATION_WIDTH` - vertical borders of windows; find out empirically. 1 px is for Graybird-dark on Xubuntu.
 
 Each theme may have these values different. 
 
@@ -115,7 +116,7 @@ if [ $1 == 0 ]; then
 	HEIGHT=1
 ```
 
-… defines a zone that has top-left corner at the top-left corner of the screen (0,0) and spans 60% of the screen horizontally and 100% of the screen vertically.
+… defines a zone that has top-left corner at the top-left corner of the screen (0,0) and spans 60 % of the screen horizontally and 100 % of the screen vertically.
 
 This zone is invoked by `./xutiles.sh 0`.
 
@@ -129,13 +130,13 @@ if [ $1 == 1 ]; then
 	HEIGHT=0.55
 ```
 
-… has top corner at the top of the screen (0) but the left corner is at the right end of the previous zone, i.e., at 60th percent of the screen. It's width is the remainder of the screen, that is 40 %, and it's height is 55 % of screen vertically.
+… has top corner at the top of the screen (0) but the left corner is at the right end of the previous zone, i.e., at 60th percent of the screen. It's width is the remainder of the screen, that is 40 %, and it's height is 55 % of screen vertically.
 
 This zone is invoked by `./xutiles.sh 1`.
 
 **Zones 3 and 4**: 
 
-Beneath zone 2, there are two zones that split the remaining space into two rectangles. On the left is starts a zone on the 60th percent of the screen horizontally, uses 17% of the screen and uses remaining height vertically, i.e., 45 %. The zone next to it is vertically the same and uses the remainder of the screen horizontally, that is 23 % (because 100-60-17=23).
+Beneath zone 2, there are two zones that split the remaining space into two rectangles. On the left is starts a zone on the 60th percent of the screen horizontally, uses 17 % of the screen and uses remaining height vertically, i.e., 45 %. The zone next to it is vertically the same and uses the remainder of the screen horizontally, that is 23 % (because 100-60-17=23).
 
 ```
 if [ $1 == 2 ]; then
@@ -204,12 +205,12 @@ For the following apps, I find it best to just force the native decorations. If 
 
 To actually use Xutiles, it's best to bind it to keyboard shortcuts. The choice of shortcuts largely depends on your taste, as well as what keyboard you use. If you have numeric block, I find it very convenient to use the numbers placed in the same relative position as the zone they invoke. To illustrate, the left large zone would be invoked by `4`, the top-right zone by `9`, the bottom-right zones would then be on `2` and `3` according to their relative position. 
 
-The modifier key choice is also important - I find the `super` key ("Windows" key) useful but it conflicts with certain default Xfce4 shortcuts. I choose to override them because Xutiles substitutes the functionality bound to those keys by default. The choice is yours.
+The modifier key choice is also important - I find the `super` key ("Windows" key) useful but it conflicts with certain default XFCE shortcuts. I choose to override them because Xutiles substitutes the functionality bound to those keys by default. The choice is yours.
 
 To bind the script to keyboard shortcuts in Xubuntu:
 
 1. In Settings Manager, select **Keyboard**.
-1. Cllick **+ Add**.
+1. Click **+ Add**.
 1. In **Command**, type the command for the zone you want to set the shortcut for. For example, `/home/you/apps/xutiles.sh 2`.
 1. Click **OK**.
 1. Press the desired keyboard shortcut.

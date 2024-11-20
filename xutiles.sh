@@ -26,7 +26,10 @@ resize_and_place_window () {
 	fi
 
 	ACTIVE_WINDOW_ID=$(xprop -root _NET_ACTIVE_WINDOW | cut -d' ' -f5 | sed s/,//)
+	# A way to get window name. Leaving here just for possible future reference as it's unreliable because windows can change names.
 	# WINNAME=$(xwininfo -id $ACTIVE_WINDOW_ID |grep 'xwininfo: Window id:' | sed -r 's/xwininfo: Window id:.*"(.*)".*/\1/')
+
+	# Window class name stays the same no matter the actual window title.
 	WIN_CLASS_NAME=$(xprop -id $ACTIVE_WINDOW_ID | grep WM_CLASS | sed -r 's/.*?"(.*?)".*/\1/')
 
 	local TMP=$((SCREEN_RESOLUTION_Y - PANEL_HEIGHT - WINDOW_DECORATION_HEIGHT))
