@@ -48,9 +48,10 @@ resize_and_place_window () {
 		local REAL_HEIGHT=$((REAL_HEIGHT+145))
 		local REAL_WIDTH=$((REAL_WIDTH+120))
 	elif [[ $WIN_CLASS_NAME == "Brave-browser" ]]; then
-		local REAL_LEFT=$((REAL_LEFT-2))
-		local REAL_HEIGHT=$((REAL_HEIGHT+28))
-		local REAL_WIDTH=$((REAL_WIDTH+4))
+		local REAL_TOP=$((REAL_TOP-20))
+		local REAL_LEFT=$((REAL_LEFT-15))
+		local REAL_HEIGHT=$((REAL_HEIGHT+64))
+		local REAL_WIDTH=$((REAL_WIDTH+33))
 	fi
 
 	wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz

@@ -129,7 +129,7 @@ if [ $1 == 1 ]; then
 	HEIGHT=0.55
 ```
 
-… has top corner at the top of the screen (0) but the left corner is at the right end of the previous zone, i.e., at 60th percent of the screen. It's width is the remaining of the screen, that is 40 %, and it's height is 55 % of screen vertically.
+… has top corner at the top of the screen (0) but the left corner is at the right end of the previous zone, i.e., at 60th percent of the screen. It's width is the remainder of the screen, that is 40 %, and it's height is 55 % of screen vertically.
 
 This zone is invoked by `./xutiles.sh 1`.
 
@@ -167,7 +167,6 @@ if [ $1 == 4 ]; then
 	HEIGHT=0.45
 	resize_and_place_window
 fi
-
 ```
 
 These zones are invoked by `./xutiles.sh 2` and `./xutiles.sh 3` respectively.
@@ -190,7 +189,7 @@ To test with other windows, prepend the command with `sleep 3;` to wait 3 second
 
 Some apps, especially browsers, don't use the native window decorations of the window manager. In some of them, you can force this in settings, in some, you can't. Xutiles can work around this and does so for a set of apps.
 
-- **Brave**: A workaround is in place if you don't use the option "Use system title bar and borders". If you want to use the option, comment out the condition branch for 'Brave-browser' (`$WIN_CLASS_NAME == "Brave-browser"`).
+- **Brave**: A workaround is in place if you don't use the option "Use system title bar and borders". If you want to use the option, comment out the condition branch for 'Brave-browser' (`$WIN_CLASS_NAME == "Brave-browser"`). The adjustments are configured for "classic" theme. If you use "GTK" or "QT", you need to adjust the offsets. Also, Brave devs may update the theme and then it's sometimes necessary to update these offsets. Log an issue or create a PR if you notice this.
 - **Resources**: A Gnome-native app for resource monitoring (a much better one than most native system monitors, such as Task Manager on XFCE). A workaround is in place because there's no way to force native window decorations.
 - **Mission Center**: Same as Resources.
 
