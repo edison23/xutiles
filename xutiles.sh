@@ -52,15 +52,16 @@ resize_and_place_window () {
 		local REAL_WIDTH=$((REAL_WIDTH+120))
 	elif [[ $WIN_CLASS_NAME == "Brave-browser" ]]; then
 		local REAL_TOP=$((REAL_TOP-20))
-		local REAL_LEFT=$((REAL_LEFT-15))
-		local REAL_HEIGHT=$((REAL_HEIGHT+64))
-		local REAL_WIDTH=$((REAL_WIDTH+33))
+		local REAL_LEFT=$((REAL_LEFT-4))
+		local REAL_HEIGHT=$((REAL_HEIGHT+26))
+		local REAL_WIDTH=$((REAL_WIDTH+8))
 	fi
 
 	wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
 	wmctrl -r :ACTIVE: -e 1,$REAL_LEFT,$REAL_TOP,$REAL_WIDTH,$REAL_HEIGHT
 }
 
+# full height left
 if [ $1 == 0 ]; then
 	LEFT=0
 	TOP=0
@@ -70,6 +71,7 @@ if [ $1 == 0 ]; then
 	resize_and_place_window
 fi
 
+# top-right
 if [ $1 == 1 ]; then
 	LEFT=0.6
 	TOP=0
@@ -79,6 +81,7 @@ if [ $1 == 1 ]; then
 	resize_and_place_window
 fi
 
+# bottom-right left half-size
 if [ $1 == 2 ]; then
 	LEFT=0.6
 	TOP=0.55
@@ -87,6 +90,7 @@ if [ $1 == 2 ]; then
 	resize_and_place_window
 fi
 
+# bottom-right right half-size
 if [ $1 == 3 ]; then
 	LEFT=0.77
 	TOP=0.55
@@ -95,6 +99,7 @@ if [ $1 == 3 ]; then
 	resize_and_place_window
 fi
 
+# bottom-right
 if [ $1 == 4 ]; then
 	LEFT=0.6
 	TOP=0.55
