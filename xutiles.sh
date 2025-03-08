@@ -55,6 +55,11 @@ resize_and_place_window () {
 		local REAL_LEFT=$((REAL_LEFT-4))
 		local REAL_HEIGHT=$((REAL_HEIGHT+26))
 		local REAL_WIDTH=$((REAL_WIDTH+8))
+	elif [[ $WIN_CLASS_NAME == "Hamster" ]]; then
+		local REAL_TOP=$((REAL_TOP-20))
+		local REAL_LEFT=$((REAL_LEFT-25))
+		local REAL_HEIGHT=$((REAL_HEIGHT+72))
+		local REAL_WIDTH=$((REAL_WIDTH+52))
 	fi
 
 	wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
@@ -105,5 +110,14 @@ if [ $1 == 4 ]; then
 	TOP=0.55
 	WIDTH=0.4
 	HEIGHT=0.45
+	resize_and_place_window
+fi
+
+# full-height right
+if [ $1 == 5 ]; then
+	LEFT=0.6
+	TOP=0
+	WIDTH=0.4
+	HEIGHT=1
 	resize_and_place_window
 fi
