@@ -44,7 +44,8 @@ resize_and_place_window () {
 	local REAL_HEIGHT=${REAL_HEIGHT%.*}
 
 	if    [[ $WIN_CLASS_NAME == "resources" ]] \
-		|| [[ $WIN_CLASS_NAME == "missioncenter" ]]; then
+		|| [[ $WIN_CLASS_NAME == "missioncenter" ]] \
+		|| [[ $WIN_CLASS_NAME == "Evince" ]]; then
 		local REAL_TOP=$((REAL_TOP-55))
 		local REAL_LEFT=$((REAL_LEFT-59))
 
